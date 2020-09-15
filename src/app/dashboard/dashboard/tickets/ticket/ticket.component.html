@@ -1,0 +1,40 @@
+<div class="header" [class.open]="open">
+  <div class="date">{{ ticket.date | date }}</div>
+</div>
+<div class="summary">
+  <div class="title">
+<!--    <div>Titel:</div>-->
+    <div>{{ ticket.title }}</div>
+  </div>
+</div>
+<!--  <div class="question">-->
+<!--    <div>Vraag:</div>-->
+<!--    <div>{{ ticket.question }}</div>-->
+<!--  </div>-->
+<!--  <div class="status">-->
+<!--    <div>Status:</div>-->
+<!--    <div>{{ getStatusLabel(ticket.status) }}</div>-->
+<!--  </div>-->
+<!--  <div class="device">-->
+<!--    <div>Apparaat:</div>-->
+<!--    <div>{{ ticket.device }}</div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div *ngIf="showFull && ticket.communication" class="communication">-->
+<!--  <div *ngFor="let reaction of ticket.communication" class="reaction"-->
+<!--       [class.user]="reaction.type === Type.USER"-->
+<!--       [class.admin]="reaction.type === Type.ADMIN">-->
+<!--    <div class="date">{{reaction.date | date:'yyyy-MM-dd HH:mm' }}</div>-->
+<!--    <div class="content">{{ reaction.content }}</div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<div class="react" *ngIf="openEditor">-->
+<!--  <textarea></textarea>-->
+<!--</div>-->
+<!--<div *ngIf="showFull && ticket.status !== Status.DONE" class="footer">-->
+<!--  <div class="close" (click)="closeTicket()">Vraag verholpen</div>-->
+<!--  <div *ngIf="!openEditor" (click)="addReaction()">Reageer</div>-->
+<!--  <div  *ngIf="openEditor" class="submit" (click)="sendReaction()">Verzenden</div>-->
+<!--</div>-->
+

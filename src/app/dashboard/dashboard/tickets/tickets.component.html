@@ -1,0 +1,38 @@
+<div class="container" [class.wrap]="!showFull">
+  <div class="flex flex-column"
+       cdkDropList
+       #newList="cdkDropList"
+       [cdkDropListData]="new"
+       [cdkDropListConnectedTo]="[inProgressList, doneList]"
+       (cdkDropListDropped)="drop($event, Status.NEW)">
+    <h1>Nieuw</h1>
+    <tsa-ticket *ngFor="let ticket of new" [ticket]="ticket" [showFull]="showFull" (click)="selectTicket(ticket)" cdkDrag [cdkDragData]="ticket"></tsa-ticket>
+  </div>
+  <div class="flex flex-column"
+       cdkDropList
+       #waitingList="cdkDropList"
+       [cdkDropListData]="inWait"
+       [cdkDropListConnectedTo]="[newList, doneList]"
+       (cdkDropListDropped)="drop($event, Status.WAITING)">
+    <h1>In wacht</h1>
+    <tsa-ticket *ngFor="let ticket of inWait" [ticket]="ticket" [showFull]="showFull" (click)="selectTicket(ticket)" cdkDrag [cdkDragData]="ticket"></tsa-ticket>
+  </div>
+  <div class="flex flex-column"
+       cdkDropList
+       #inProgressList="cdkDropList"
+       [cdkDropListData]="inProgress"
+       [cdkDropListConnectedTo]="[newList, doneList]"
+       (cdkDropListDropped)="drop($event, Status.IN_PROGRESS)">
+    <h1>Bezig</h1>
+    <tsa-ticket *ngFor="let ticket of inProgress" [ticket]="ticket" [showFull]="showFull" (click)="selectTicket(ticket)" cdkDrag [cdkDragData]="ticket"></tsa-ticket>
+  </div>
+  <div class="flex flex-column"
+       cdkDropList
+       #doneList="cdkDropList"
+       [cdkDropListData]="done"
+       [cdkDropListConnectedTo]="[newList]"
+       (cdkDropListDropped)="drop($event, Status.DONE)">
+    <h1>Klaar</h1>
+    <tsa-ticket *ngFor="let ticket of done" [ticket]="ticket" [showFull]="showFull" (click)="selectTicket(ticket)" cdkDrag [cdkDragData]="ticket"></tsa-ticket>
+  </div>
+</div>

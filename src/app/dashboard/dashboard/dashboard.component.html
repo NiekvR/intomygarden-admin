@@ -1,0 +1,32 @@
+<div class="header">
+  <div class="flex align-items-center">
+    <img src="assets/ternadmin.png" (dblclick)="goToUsers()"/>
+    <tsa-error-count (click)="goToExceptionLog()"></tsa-error-count>
+  </div>
+  <div class="projects" *ngIf="!isMobile && user">
+    <h1 *ngIf="getProjectsArray(user).length === 1">{{ projects[getProjectsArray(user)[0]]}}</h1>
+    <div *ngIf="getProjectsArray(user).length > 1" class="multiple">
+      <div *ngFor="let project of getProjectsArray(user)" class="m-r-15" (click)="toggleProject(project)">
+        <input type="checkbox" name="project" value="project" id="project" checked>
+        <label for="project">{{projects[project].fullName}}</label>
+      </div>
+    </div>
+  </div>
+  <tsa-button title="Uitloggen" (click)="logOut()"></tsa-button>
+</div>
+
+<div class="content" *ngIf="!isMobile">
+<!--  <div class="sidebar">-->
+<!--    <tsa-sidebar></tsa-sidebar>-->
+<!--  </div>-->
+  <div class="main">
+    <tsa-tickets (selectedTicket)="selectedTicket=$event" [filter]="filter"></tsa-tickets>
+  </div>
+  <div class="detail">
+    <tsa-ticket-detail *ngIf="selectedTicket" [ticket]="selectedTicket"></tsa-ticket-detail>
+  </div>
+</div>
+
+<div class="content" *ngIf="isMobile">
+  <tsa-ticket-summary></tsa-ticket-summary>
+</div>

@@ -1,0 +1,17 @@
+<div *ngFor="let summary of ticketSummaries" class="flex flex-column p-15">
+  <div class="flex">
+    <h1>{{projects[summary.project]}}</h1>
+  </div>
+  <div class="flex p-b-5">
+    <p class="flex-static-width">Nieuw:</p>
+    <p>{{summary.new}}</p>
+  </div>
+  <div class="flex p-b-5">
+    <p class="flex-static-width">In wacht:</p>
+    <p>{{summary.waiting}}</p>
+  </div>
+  <div class="flex">
+    <p class="flex-static-width">In Behandeling:</p>
+    <p>{{summary.progress}}</p>
+  </div>
+</div>

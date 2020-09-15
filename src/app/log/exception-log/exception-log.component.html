@@ -1,0 +1,26 @@
+<div class="header">
+  <div class="flex align-items-center">
+    <img src="assets/ternadmin.png" (dblclick)="goToDashboard()"/>
+    <tsa-error-count></tsa-error-count>
+  </div>
+  <tsa-button title="Uitloggen" (click)="logOut()"></tsa-button>
+</div>
+
+<div class="container">
+  <div class="row row-header">
+    <div class="date">Date</div>
+    <div class="project">Project</div>
+    <div class="user">user</div>
+    <div class="type">Type</div>
+    <div class="description">Description</div>
+    <div class="stacktrace">Stacktrace</div>
+  </div>
+  <div *ngFor="let exception of exceptions" class="row">
+    <div class="date">{{exception.date | date}}</div>
+    <div class="project">{{exception.project}}</div>
+    <div class="user">{{exception.user}}</div>
+    <div class="type">{{exception.type}}</div>
+    <div class="description">{{exception.description}}</div>
+    <div class="stacktrace">{{exception.stacktrace}}</div>
+  </div>
+</div>

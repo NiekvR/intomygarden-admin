@@ -1,0 +1,69 @@
+<div *ngIf="!!ticket" class="container">
+  <div class="header" [class.open]="open">
+    <div class="date">{{ ticket.date | date }}</div>
+  </div>
+  <div class="summary">
+    <div class="title">
+      <div>Gebruiker:</div>
+      <div>{{ ticket.user }}</div>
+    </div>
+    <div class="title">
+      <div>Titel:</div>
+      <div>{{ ticket.title }}</div>
+    </div>
+    <div class="question">
+      <div>Vraag:</div>
+      <div>{{ ticket.question }}</div>
+    </div>
+    <div class="status">
+      <div>Status:</div>
+      <div>{{ getStatusLabel(ticket.status) }}</div>
+    </div>
+    <div class="device">
+      <div>Apparaat:</div>
+      <div>{{ ticket.device }}</div>
+    </div>
+    <div class="device">
+      <div>Browser:</div>
+      <div>{{ ticket.browser }}</div>
+    </div>
+  </div>
+  <h2>Chat</h2>
+  <div *ngIf="ticket.communication" class="communication">
+    <div *ngFor="let reaction of ticket.communication" class="reaction"
+         [class.user]="reaction.type === Type.USER"
+         [class.admin]="reaction.type === Type.ADMIN">
+      <div class="flex space-between reaction-header">
+        <div class="user">{{ reaction.type === Type.USER ? 'Gebruiker' : '' }}</div>
+        <div class="date">{{reaction.date | date:'yyyy-MM-dd HH:mm' }}</div>
+      </div>
+      <div class="content">{{ reaction.content }}</div>
+    </div>
+  </div>
+
+  <div class="react" *ngIf="openEditor">
+    <textarea class=""></textarea>
+  </div>
+  <div *ngIf="ticket.status !== Status.DONE" class="react-footer">
+    <div class="button" *ngIf="!openEditor" (click)="addReaction()">Reageer</div>
+    <div class="flex" *ngIf="openEditor">
+      <div class="button" (click)="openEditor=!openEditor">Annuleer</div>
+      <div class="button submit" (click)="sendReaction()">Verzenden</div>
+    </div>
+  </div>
+  <div class="notes" [class.open]="noteOpen">
+    <h2 (click)="toggleNote()">Notities</h2>
+    <form *ngIf="noteOpen">
+      <span class="form-control">
+        <textarea *ngIf="note" id="note" type="text" [value]="note.note"
+                  placeholder="Plaats hier eventuele opmerkingen"
+                  autocomplete="off"></textarea>
+        <label for="note">Notitie</label>
+      </span>
+    </form>
+  </div>
+  <div *ngIf="ticket.status !== Status.DONE" class="footer">
+    <div class="button close" (click)="saveNote()">Opslaan</div>
+  </div>
+</div>
+

@@ -1,0 +1,34 @@
+:host {
+  .container {
+    display: flex;
+    flex-direction: column;
+
+    .row {
+      display: flex;
+      border-bottom: 1px solid #565656;
+
+      &.header {
+        font-weight: bold;
+        background-color: #55b6d6;
+      }
+
+      div {
+        padding: 3px 5px;
+      }
+
+      .email {
+        flex: 0 0 300px;
+        border-right: 1px solid #565656;
+      }
+
+      .projects, .roles {
+        flex: 1 1 0;
+        border-right: 1px solid #565656;
+      }
+
+      .permission {
+        flex: 0 0 100px;
+      }
+    }
+  }
+}

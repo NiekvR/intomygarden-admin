@@ -1,0 +1,59 @@
+:host {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    flex: 0 0 51px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 auto;
+    overflow: auto;
+
+    .row {
+      display: flex;
+      border-bottom: 1px solid #565656;
+
+      &.row-header {
+        font-weight: bold;
+        background-color: #55b6d6;
+      }
+
+      div {
+        padding: 3px 5px;
+      }
+
+      .date {
+        flex: 0 0 82px;
+        border-right: 1px solid #565656;
+      }
+
+      .project {
+        flex: 0 0 55px;
+        border-right: 1px solid #565656;
+      }
+
+      .user {
+        flex: 0 0 150px;
+        border-right: 1px solid #565656;
+      }
+
+      .type {
+        flex: 0 0 150px;
+        border-right: 1px solid #565656;
+      }
+
+      .description {
+        flex: 0 0 150px;
+        border-right: 1px solid #565656;
+      }
+
+      .stacktrace {
+        flex: 1 1 0;
+      }
+    }
+  }
+}

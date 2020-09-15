@@ -1,0 +1,39 @@
+<div class="header">
+  <img src="assets/ternadmin.png" (dblclick)="goToDashboard()"/>
+  <tsa-button title="Uitloggen" (click)="logOut()"></tsa-button>
+</div>
+
+<div class="container">
+  <div class="row header">
+    <div class="email">Email</div>
+    <div class="projects">Projects</div>
+    <div class="roles">Roles</div>
+    <div class="permission">Permission</div>
+  </div>
+  <div *ngFor="let user of users" class="row">
+    <ng-container *ngIf="editing(user.uid)">
+      <div class="email" (dblclick)="edit(user.uid)">{{user.email}}</div>
+      <div class="projects">
+        <div class="role" *ngFor="let project of getKeys(user.projects)">
+          <input type="checkbox" (change)="onChange('projects', user.uid, project, $event.target.checked)" [checked]="user.projects[project]">
+          {{project}}
+        </div>
+      </div>
+      <div class="roles">
+        <div class="role" *ngFor="let role of getKeys(user.roles)">
+          <input type="checkbox" (change)="onChange('roles', user.uid, role, $event.target.checked)" [checked]="user.roles[role]">
+          {{role}}
+        </div>
+      </div>
+      <div class="permission">
+        <input type="checkbox" (change)="permssionChange(user.uid, $event.target.checked)" [checked]="user.permission">
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!editing(user.uid)">
+      <div class="email" (dblclick)="edit(user.uid)">{{user.email}}</div>
+      <div class="projects">{{showRelavantObjects(user.projects)}}</div>
+      <div class="roles">{{showRelavantObjects((user.roles))}}</div>
+      <div class="permission">{{user.permission}}</div>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<img src="assets/ternwebdesign.png"/>
+<h1 class="m-0 m-b-20">Admin Dashboard</h1>
+<div class="card">
+  <h1 class="m-0">Registreer</h1>
+  <form [formGroup]="signupForm">
+    <span class="form-control">
+      <input id="email"
+             type="text"
+             placeholder="Emailadres"
+             [class.invalid]="signupForm.controls.email.errors"
+             formControlName="email"
+             autocomplete="off"/>
+      <label for="email" [class.invalid]="signupForm.controls.email.errors">Emailadres</label>
+    </span>
+    <span class="form-control">
+      <input id="password"
+             type="password"
+             placeholder="Wachtwoord"
+             [class.invalid]="signupForm.controls.password.errors"
+             formControlName="password"
+             autocomplete="off"/>
+      <label for="email" [class.invalid]="signupForm.controls.password.errors">Wachtwoord</label>
+    </span>
+    <span class="flex justify-content-end">
+      <tsa-button title="Registreer" animated="true" [disabled]="!signupForm.valid" (click)="submit()"></tsa-button>
+    </span>
+  </form>
+</div>
